@@ -28,7 +28,7 @@
 **/
 
 angular.module( "ngAutocomplete", [])
-  .directive('ngAutocomplete', function() {
+  .directive('ngAutocomplete', function( $location) {
     return {
       require: 'ngModel',
       scope: {
@@ -94,6 +94,18 @@ angular.module( "ngAutocomplete", [])
 
                 controller.$setViewValue(element.val());
               });
+
+              if ( ($location.path() === "/") || ( $location.path().substr(0, "/menu".length) === "/menu" )) {
+                  scope.$parent.select_outlet();
+              } 
+              else if(  ( $location.path().substr(0, "/cart".length) === "/cart" ) ){
+                scope.$parent.edit_convert_landmark_to_json( scope.details ); 
+              }
+              else if(  ( $location.path().substr(0, "/profile".length) === "/profile" ) ){
+                
+                 scope.$parent.edit_convert_landmark_to_json( scope.details ); 
+              }
+
             }
             else {
               if (watchEnter) {
