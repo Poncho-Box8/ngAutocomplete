@@ -95,7 +95,7 @@ angular.module( "ngAutocomplete", [])
                 controller.$setViewValue(element.val());
               });
 
-              if ( ($location.path() === "/") || ( $location.path().substr(0, "/menu".length) === "/menu" )) {
+              if ( ($location.path() === "/") || ( $location.path().substr(0, "/menu".length) === "/menu" ) || ($location.path().substr(0, "/category".length) === "/category" )) {
                   scope.$parent.select_outlet();
               } 
               else if(  ( $location.path().substr(0, "/cart".length) === "/cart" ) ){
